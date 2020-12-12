@@ -8,7 +8,11 @@ import java.util.*
 
 class NovelService @Autowired constructor(override val repository: NovelRepository): GenericService<Novel>(repository) {
     fun findByName(name: String): Optional<Novel>{
-        return repository.findByName(name)
+        return repository.findByNameIgnoreCase(name)
+    }
+
+    fun findByNameLike(name: String): List<Novel>{
+        return repository.findByTitleContainingIgnoreCase(name);
     }
 
     fun findByAuthor(author: String): Optional<Novel>{
@@ -21,4 +25,5 @@ class NovelService @Autowired constructor(override val repository: NovelReposito
     fun findByTags(tags: List<Tag>): List<Novel>{
         return repository.findAllByTags(tags);
     }
+
 }

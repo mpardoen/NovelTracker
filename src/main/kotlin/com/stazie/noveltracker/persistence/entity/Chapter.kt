@@ -5,5 +5,5 @@ import java.time.LocalDate
 
 class Chapter(novel: Novel, number: String? = null): GenericEntity() {
     var url: URL? = null
-    var published_date: LocalDate? = null
+    var publishedDate: LocalDate? = null
 }
