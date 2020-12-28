@@ -12,7 +12,7 @@ class NovelService @Autowired constructor(override val repository: NovelReposito
     }
 
     fun findByNameLike(name: String): List<Novel>{
-        return repository.findByTitleContainingIgnoreCase(name);
+        return repository.findByNameContainingIgnoreCase(name);
     }
 
     fun findByAuthor(author: String): Optional<Novel>{
@@ -20,10 +20,10 @@ class NovelService @Autowired constructor(override val repository: NovelReposito
     }
 
     fun findByTag(tag: Tag): List<Novel>{
-        return repository.findAllByTag(tag)
+        return repository.findAllByTags(tag)
     }
     fun findByTags(tags: List<Tag>): List<Novel>{
-        return repository.findAllByTags(tags);
+        return repository.findAllByTagsIn(tags);
     }
 
 }

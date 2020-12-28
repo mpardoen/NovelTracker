@@ -1,9 +1,25 @@
 package com.stazie.noveltracker.persistence.entity
 
-class User(name: String, email: String): GenericEntity() {
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Table
+
+@Entity
+@Table(name="user")
+class User(
+    @Column(name= "name")
+    var name: String = "",
+
+    @Column(name="email")
+    var email: String = ""): GenericEntity() {
+
+
+
+    @Column(name="password")
     private var password: String? = null
         fun get() : String?{
             // TODO hash this
             return password
         }
+
 }
